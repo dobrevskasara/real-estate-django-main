@@ -49,22 +49,32 @@
                                     <i class="bi bi-list"></i> List
                                 </button>
                             </div>
-{#                            <div class="sort-dropdown">#}
-{#                                <select class="form-select form-select-sm">#}
-{#                                    <option>Sort by: Newest</option>#}
-{#                                    <option>Price: Low to High</option>#}
-{#                                    <option>Price: High to Low</option>#}
-{#                                    <option>Most Viewed</option>#}
-{#                                </select>#}
-{#                            </div>#}
-                            <div class="sort-dropdown">
-                                <select class="form-select form-select-sm" id="sort-select" onchange="applySort()">
-                                    <option value="-created_at" {% if request.GET.sort == '-created_at' %}selected{% endif %}>Sort by: Newest</option>
-                                    <option value="price" {% if request.GET.sort == 'price' %}selected{% endif %}>Price: Low to High</option>
-                                    <option value="-price" {% if request.GET.sort == '-price' %}selected{% endif %}>Price: High to Low</option>
-                                    <option value="-views" {% if request.GET.sort == '-views' %}selected{% endif %}>Most Viewed</option>
-                                </select>
-                            </div>
+                            <div class="d-flex justify-content-end align-items-center mb-4">
+    <form method="GET" action="" id="filterSortForm" class="d-flex gap-3">
+        {% for key, value in request.GET.items %}
+            {% if key != 'sort' and key != 'listing_type' %}
+                <input type="hidden" name="{{ key }}" value="{{ value }}">
+            {% endif %}
+        {% endfor %}
+
+        <div class="filter-type-dropdown">
+            <select name="listing_type" class="form-select form-select-sm" onchange="this.form.submit()">
+                <option value="" {% if not request.GET.listing_type %}selected{% endif %}>All Types</option>
+                <option value="sale" {% if request.GET.listing_type == 'sale' %}selected{% endif %}>For Sale</option>
+                <option value="rent" {% if request.GET.listing_type == 'rent' %}selected{% endif %}>For Rent</option>
+            </select>
+        </div>
+
+        <div class="sort-dropdown">
+            <select name="sort" class="form-select form-select-sm" onchange="this.form.submit()">
+                <option value="-created_at" {% if request.GET.sort == '-created_at' %}selected{% endif %}>Sort by: Newest</option>
+                <option value="price" {% if request.GET.sort == 'price' %}selected{% endif %}>Price: Low to High</option>
+                <option value="-price" {% if request.GET.sort == '-price' %}selected{% endif %}>Price: High to Low</option>
+                <option value="-views" {% if request.GET.sort == '-views' %}selected{% endif %}>Most Viewed</option>
+            </select>
+        </div>
+    </form>
+</div>
 
 <script>
 function applySort() {
