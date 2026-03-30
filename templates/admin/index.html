@@ -1,0 +1,132 @@
+{% extends "admin/base_site.html" %}
+{% load static %}
+
+{% block content %}
+
+    {% if jazzmin_settings.welcome_sign %}
+        <div class="welcome-sign">
+            {{ jazzmin_settings.welcome_sign }}
+        </div>
+    {% endif %}
+
+
+    <div class="container-fluid">
+
+      <div class="row mb-4">
+
+    <div class="col-lg-2 col-6">
+        <div class="small-box bg-info">
+            <div class="inner">
+                <h3>{{ properties_count }}</h3>
+                <p>Total Properties</p>
+            </div>
+            <div class="icon"><i class="fas fa-building"></i></div>
+        </div>
+    </div>
+
+    <div class="col-lg-2 col-6">
+        <div class="small-box bg-danger">
+            <div class="inner">
+                <h3>{{ sale_count }}</h3>
+                <p>For Sale</p>
+            </div>
+            <div class="icon"><i class="fas fa-tags"></i></div>
+        </div>
+    </div>
+
+    <div class="col-lg-2 col-6">
+        <div class="small-box bg-primary">
+            <div class="inner">
+                <h3>{{ rent_count }}</h3>
+                <p>For Rent</p>
+            </div>
+            <div class="icon"><i class="fas fa-key"></i></div>
+        </div>
+    </div>
+
+    <div class="col-lg-3 col-6">
+        <div class="small-box bg-success">
+            <div class="inner">
+                <h3>{{ users_count }}</h3>
+                <p>Total Users</p>
+            </div>
+            <div class="icon"><i class="fas fa-users"></i></div>
+        </div>
+    </div>
+
+    <div class="col-lg-3 col-6">
+        <div class="small-box bg-warning">
+            <div class="inner">
+                <h3>{{ features_count }}</h3>
+                <p>Total Features</p>
+            </div>
+            <div class="icon"><i class="fas fa-star"></i></div>
+        </div>
+    </div>
+
+</div>
+
+        <div class="card mb-4">
+            <div class="card-header">
+                <h3 class="card-title">Quick Actions</h3>
+            </div>
+            <div class="card-body">
+
+                <a href="/admin/properties/property/add/" class="btn btn-primary">
+                    <i class="fas fa-plus"></i> Add Property
+                </a>
+
+                <a href="/admin/auth/user/add/" class="btn btn-success">
+                    <i class="fas fa-user-plus"></i> Add User
+                </a>
+
+                <a href="/admin/properties/feature/add/" class="btn btn-warning">
+                    <i class="fas fa-star"></i> Add Feature
+                </a>
+
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Latest Properties</h3>
+            </div>
+
+            <div class="card-body p-0">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Type</th> <th>Price</th>
+                        <th>City</th>
+                        <th>Created</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for property in latest_properties %}
+                        <tr>
+                            <td>{{ property.name }}</td>
+                            <td>
+                {% if property.listing_type == 'sale' %}
+                    <span class="badge badge-danger">Sale</span>
+                {% else %}
+                    <span class="badge badge-primary">Rent</span>
+                {% endif %}
+            </td>
+                            <td>{{ property.price }}</td>
+                            <td>{{ property.city }}</td>
+                            <td>{{ property.created_at }}</td>
+                        </tr>
+                    {% empty %}
+                        <tr>
+                            <td colspan="4">No properties yet</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}

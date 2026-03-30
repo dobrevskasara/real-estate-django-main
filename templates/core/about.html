@@ -1,0 +1,264 @@
+{% extends "base.html" %}
+{% block title %}About Us — NestQuest{% endblock %}
+{% block body_class %}inner-page{% endblock %}
+
+{% load static %}
+
+{% block content %}
+
+<!-- Page Title -->
+<div class="page-title">
+    <div class="heading">
+        <div class="container">
+            <div class="row d-flex justify-content-center text-center">
+                <div class="col-lg-8">
+                    <h1 class="heading-title">About NestQuest</h1>
+                    <p class="mb-0">We are more than a real estate agency — we are your trusted guide through one of life's most important journeys.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <nav class="breadcrumbs">
+        <div class="container">
+            <ol>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li class="current">About</li>
+            </ol>
+        </div>
+    </nav>
+</div>
+
+<!-- Mission & Vision Section -->
+<section class="section" id="about-mission">
+    <div class="container" data-aos="fade-up">
+        <div class="row align-items-center gy-5">
+
+            <div class="col-lg-6" data-aos="fade-right" data-aos-delay="100">
+                <div class="image-section">
+                    <img src="{% static 'assets/img/real-estate/property-exterior-7.webp' %}"
+                         alt="NestQuest Office" class="img-fluid rounded">
+                </div>
+            </div>
+
+            <div class="col-lg-6" data-aos="fade-left" data-aos-delay="200">
+                <div class="content-wrapper">
+
+                    <div class="section-badge mb-3">
+                        <i class="bi bi-buildings me-2"></i>
+                        Who We Are
+                    </div>
+
+                    <h2 class="mb-4">Turning Property Dreams Into Reality Since 2012</h2>
+
+                    <p class="mb-3">NestQuest was founded with a simple belief: finding a home should be an exciting journey, not a stressful one. Over the years, we've grown into a trusted real estate agency helping hundreds of families and investors find the right property at the right price.</p>
+
+                    <p class="mb-4">We operate with full transparency — every listing on our platform is verified, every agent on our team is certified, and every client receives personalized attention from start to finish.</p>
+
+                    <div class="row gy-4 mb-4">
+                        <div class="col-6">
+                            <div class="p-3 border rounded text-center">
+                                <div class="section-badge mb-1">
+                                    <i class="bi bi-eye me-1"></i> Our Vision
+                                </div>
+                                <p class="mb-0 small">To be the most trusted real estate platform in the region, where every property transaction is simple, transparent, and fair.</p>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="p-3 border rounded text-center">
+                                <div class="section-badge mb-1">
+                                    <i class="bi bi-bullseye me-1"></i> Our Mission
+                                </div>
+                                <p class="mb-0 small">To connect people with properties that match their lifestyle and goals, through expert guidance and verified listings.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="features-list">
+                        <div class="feature-item">
+                            <i class="bi bi-check-circle"></i>
+                            <span>100% verified property listings</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="bi bi-check-circle"></i>
+                            <span>Dedicated agent for every client</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="bi bi-check-circle"></i>
+                            <span>AI-powered property descriptions</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Stats Section -->
+<section class="section light-background" id="about-stats">
+    <div class="container" data-aos="fade-up">
+
+        <div class="section-title text-center mb-5">
+            <h2>NestQuest by the Numbers</h2>
+            <p>Over a decade of helping people find their perfect property</p>
+        </div>
+
+        <div class="row gy-4 text-center">
+
+            <div class="col-lg-3 col-6" data-aos="zoom-in" data-aos-delay="100">
+                <div class="p-4">
+                    <h3 class="display-5 fw-bold" style="color: var(--accent-color);">
+                        <span data-purecounter-start="0" data-purecounter-end="500" data-purecounter-duration="2" class="purecounter"></span>+
+                    </h3>
+                    <p class="fw-semibold mb-1">Properties Listed</p>
+                    <p class="text-muted small">Verified and approved listings across the region</p>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-6" data-aos="zoom-in" data-aos-delay="200">
+                <div class="p-4">
+                    <h3 class="display-5 fw-bold" style="color: var(--accent-color);">
+                        <span data-purecounter-start="0" data-purecounter-end="12" data-purecounter-duration="2" class="purecounter"></span>+
+                    </h3>
+                    <p class="fw-semibold mb-1">Years of Experience</p>
+                    <p class="text-muted small">Serving buyers, sellers and renters since 2012</p>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-6" data-aos="zoom-in" data-aos-delay="300">
+                <div class="p-4">
+                    <h3 class="display-5 fw-bold" style="color: var(--accent-color);">
+                        <span data-purecounter-start="0" data-purecounter-end="1200" data-purecounter-duration="2" class="purecounter"></span>+
+                    </h3>
+                    <p class="fw-semibold mb-1">Happy Clients</p>
+                    <p class="text-muted small">Families and investors who found their match</p>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-6" data-aos="zoom-in" data-aos-delay="400">
+                <div class="p-4">
+                    <h3 class="display-5 fw-bold" style="color: var(--accent-color);">
+                        <span data-purecounter-start="0" data-purecounter-end="95" data-purecounter-duration="2" class="purecounter"></span>%
+                    </h3>
+                    <p class="fw-semibold mb-1">Client Satisfaction</p>
+                    <p class="text-muted small">Based on post-transaction client surveys</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Team Section -->
+<section class="section" id="about-team">
+    <div class="container" data-aos="fade-up">
+
+        <div class="section-title text-center mb-5">
+            <h2>Meet Our Team</h2>
+            <p>Experienced professionals dedicated to making your property journey seamless</p>
+        </div>
+
+        <div class="row gy-4 justify-content-center">
+
+            <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                <div class="card text-center border-0 shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <div class="mb-3">
+                            <img src="{% static 'assets/img/real-estate/agent-1.webp' %}"
+                                 alt="Team Member"
+                                 class="rounded-circle"
+                                 style="width: 90px; height: 90px; object-fit: cover;">
+                        </div>
+                        <h5 class="mb-1">Sarah Johnson</h5>
+                        <p class="text-muted small mb-2">Founder & CEO</p>
+                        <p class="small">15+ years in real estate. Passionate about connecting people with their dream homes.</p>
+                        <div class="d-flex justify-content-center gap-2 mt-3">
+                            <a href="#" class="btn btn-sm btn-outline-secondary"><i class="bi bi-linkedin"></i></a>
+                            <a href="#" class="btn btn-sm btn-outline-secondary"><i class="bi bi-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                <div class="card text-center border-0 shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <div class="mb-3">
+                            <img src="{% static 'assets/img/real-estate/agent-2.webp' %}"
+                                 alt="Team Member"
+                                 class="rounded-circle"
+                                 style="width: 90px; height: 90px; object-fit: cover;">
+                        </div>
+                        <h5 class="mb-1">Michael Petrov</h5>
+                        <p class="text-muted small mb-2">Senior Property Agent</p>
+                        <p class="small">Specialist in residential properties and first-time buyer guidance.</p>
+                        <div class="d-flex justify-content-center gap-2 mt-3">
+                            <a href="#" class="btn btn-sm btn-outline-secondary"><i class="bi bi-linkedin"></i></a>
+                            <a href="#" class="btn btn-sm btn-outline-secondary"><i class="bi bi-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                <div class="card text-center border-0 shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <div class="mb-3">
+                            <img src="{% static 'assets/img/real-estate/agent-3.webp' %}"
+                                 alt="Team Member"
+                                 class="rounded-circle"
+                                 style="width: 90px; height: 90px; object-fit: cover;">
+                        </div>
+                        <h5 class="mb-1">Ana Dimitrieva</h5>
+                        <p class="text-muted small mb-2">Commercial Property Expert</p>
+                        <p class="small">Focused on commercial spaces, investments and portfolio management.</p>
+                        <div class="d-flex justify-content-center gap-2 mt-3">
+                            <a href="#" class="btn btn-sm btn-outline-secondary"><i class="bi bi-linkedin"></i></a>
+                            <a href="#" class="btn btn-sm btn-outline-secondary"><i class="bi bi-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
+                <div class="card text-center border-0 shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <div class="mb-3">
+                            <img src="{% static 'assets/img/real-estate/agent-4.webp' %}"
+                                 alt="Team Member"
+                                 class="rounded-circle"
+                                 style="width: 90px; height: 90px; object-fit: cover;">
+                        </div>
+                        <h5 class="mb-1">David Stojanovski</h5>
+                        <p class="text-muted small mb-2">Legal & Listings Advisor</p>
+                        <p class="small">Ensures every transaction is legally sound and every listing fully compliant.</p>
+                        <div class="d-flex justify-content-center gap-2 mt-3">
+                            <a href="#" class="btn btn-sm btn-outline-secondary"><i class="bi bi-linkedin"></i></a>
+                            <a href="#" class="btn btn-sm btn-outline-secondary"><i class="bi bi-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="section light-background">
+    <div class="container text-center" data-aos="fade-up">
+        <h2 class="mb-3">Ready to Find Your Perfect Property?</h2>
+        <p class="mb-4 text-muted">Browse our verified listings or get in touch with our team today.</p>
+        <div class="d-flex gap-3 justify-content-center flex-wrap">
+            <a href="{% url 'property_list' %}" class="btn" style="background-color: var(--accent-color); color: var(--contrast-color); border: none;">
+                <i class="bi bi-search me-1"></i> Browse Properties
+            </a>
+            <a href="{% url 'contact' %}" class="btn btn-outline-secondary">
+                <i class="bi bi-chat-dots me-1"></i> Contact Us
+            </a>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

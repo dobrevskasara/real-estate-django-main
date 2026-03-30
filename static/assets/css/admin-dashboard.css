@@ -1,0 +1,43 @@
+.small-box {
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+}
+
+.small-box:hover {
+    transform: translateY(-4px);
+    transition: 0.2s;
+}
+
+.small-box.bg-warning .inner h3,
+.small-box.bg-warning .inner p {
+    color: #fff !important;
+}
+
+.btn-warning {
+    color: #fff !important;
+}
+
+.btn {
+    border-radius: 999px;
+    padding: 8px 18px;
+}
+
+.table tbody tr:hover {
+    background: #f9fafb;
+}
+
+.content-wrapper {
+    background: #f3f4f6;
+    padding: 25px;
+}
+
+.welcome-sign {
+    text-align: center;
+    padding: 30px 0;
+    font-size: 2.2rem;
+    font-weight: 500;
+    color: #2d3748;
+    margin-bottom: 30px;
+}
+
+

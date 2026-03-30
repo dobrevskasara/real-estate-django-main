@@ -1,0 +1,239 @@
+{% extends "base.html" %}
+{% block body_class %}property-details-page{% endblock %}
+
+{% load static %}
+
+{% block content %}
+
+    <div class="page-title">
+        <div class="heading">
+            <div class="container">
+                <div class="row d-flex justify-content-center text-center">
+                    <div class="col-lg-8">
+                        <h1 class="heading-title">Property Details</h1>
+                        <p class="mb-0">
+                            Detailed overview of the property at {{ property.location }}, {{ property.city }}.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <nav class="breadcrumbs">
+            <div class="container">
+                <ol>
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li class="current">Property Details</li>
+                </ol>
+            </div>
+        </nav>
+    </div><section id="property-details" class="property-details section">
+
+        <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+            <div class="row gy-4">
+
+                <div class="col-lg-8">
+
+                    <div class="property-gallery" data-aos="fade-up" data-aos-delay="200">
+                        <div class="main-image-container image-zoom-container">
+
+                            {% with cover=property.cover_image %}
+                                {% if cover %}
+                                    <img id="main-image"
+                                         src="{{ cover.image.url }}"
+                                         class="img-fluid main-property-image">
+                                {% else %}
+                                    <p>No images available</p>
+                                {% endif %}
+                            {% endwith %}
+
+                            <div class="image-nav-buttons">
+                                <button class="image-nav-btn prev-image" type="button">
+                                    <i class="bi bi-chevron-left"></i>
+                                </button>
+                                <button class="image-nav-btn next-image" type="button">
+                                    <i class="bi bi-chevron-right"></i>
+                                </button>
+                            </div>
+
+                        </div>
+                        {% if property.images.count > 1 %}
+                            <div class="thumbnail-gallery thumbnail-list">
+                                {% for img in property.images.all %}
+                                    <div class="thumbnail-item" data-image="{{ img.image.url }}">
+                                        <img src="{{ img.image.url }}" class="img-fluid">
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div><div class="property-description" data-aos="fade-up" data-aos-delay="300">
+                        <h3>About This Property</h3>
+                        <p>{{ property.description|linebreaks }}</p>
+                        {% if not property.description or property.description|length < 100 %}
+                            <p>This exceptional {{ property.property_type }} offers a unique blend of comfort and style. Located in the sought-after neighborhood of {{ property.city }}, this home is perfect for those seeking quality living in a prime location.</p>
+                        {% endif %}
+                    </div><div class="property-amenities" data-aos="fade-up" data-aos-delay="400">
+                        <h3>Amenities & Features</h3>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h4>Interior Features</h4>
+                                <ul class="features-list">
+                                    {% for feature in property.features.all %}
+                                        <li><i class="bi bi-check-circle"></i>{{ feature.name }}</li>
+                                    {% empty %}
+                                        <li><i class="bi bi-check-circle"></i>Modern Interior Design</li>
+                                        <li><i class="bi bi-check-circle"></i>High-end Finishes</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <h4>Property Highlights</h4>
+                                <ul class="features-list">
+                                    <li><i class="bi bi-check-circle"></i>{{ property.property_type|title }}</li>
+                                    <li><i class="bi bi-check-circle"></i>{{ property.listing_type|title }}</li>
+                                    <li><i class="bi bi-check-circle"></i>Prime Location in {{ property.city }}</li>
+                                    <li><i class="bi bi-check-circle"></i>{{ property.area }} m² Living Space</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div><div class="property-map" data-aos="fade-up" data-aos-delay="500">
+                        <h3>Location</h3>
+                        <div id="map" style="height: 400px; width: 100%; border-radius: 5px;"></div>
+                      
+                    </div></div>
+
+                <div class="col-lg-4">
+
+                    <div class="property-overview sticky-top" data-aos="fade-up" data-aos-delay="200">
+                        <div class="price-tag">{{ property.price }}€</div>
+                        <div class="property-status">{{ property.listing_type|title }}</div>
+
+                        <div class="property-address">
+                            <h4>{{ property.location }}</h4>
+                            <p>{{ property.city }}</p>
+                        </div>
+
+                        <div class="property-stats">
+                            <div class="stat-item">
+                                <i class="bi bi-house"></i>
+                                <div>
+                                    <span class="value">{{ property.bedrooms }}</span>
+                                    <span class="label">Bedrooms</span>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <i class="bi bi-droplet"></i>
+                                <div>
+                                    <span class="value">{{ property.bathrooms }}</span>
+                                    <span class="label">Bathrooms</span>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <i class="bi bi-rulers"></i>
+                                <div>
+                                    <span class="value">{{ property.area }}</span>
+                                    <span class="label">m² Area</span>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <i class="bi bi-tag"></i>
+                                <div>
+                                    <span class="value">{{ property.property_type|title }}</span>
+                                    <span class="label">Type</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="agent-info">
+                            <div class="agent-avatar">
+                                <img src="{% static 'assets/img/real-estate/agent-3.webp' %}" alt="Agent" class="img-fluid">
+                            </div>
+                            <div class="agent-details">
+                                <h4>{{ property.owner.get_full_name|default:property.owner.username }}</h4>
+                                <p class="agent-title">Licensed Real Estate Agent</p>
+                                <p class="agent-phone"><i class="bi bi-telephone"></i>+1 (555) 123-4567</p>
+                                <p class="agent-email"><i class="bi bi-envelope"></i>{{ property.owner.email }}</p>
+                            </div>
+                        </div><div class="contact-form">
+                            <h4>Schedule a Tour</h4>
+                            <form action="#" method="post" class="php-email-form">
+                                {% csrf_token %}
+                                <div class="row">
+                                    <div class="col-12 form-group">
+                                        <input type="text" name="name" class="form-control" placeholder="Your Name" required="">
+                                    </div>
+                                    <div class="col-12 form-group">
+                                        <input type="email" name="email" class="form-control" placeholder="Your Email" required="">
+                                    </div>
+                                    <div class="col-12 form-group">
+                                        <input type="tel" name="phone" class="form-control" placeholder="Your Phone">
+                                    </div>
+                                    <div class="col-12 form-group">
+                                        <input type="text" name="subject" class="form-control" value="Tour Request: {{ property.name }}">
+                                    </div>
+                                    <div class="col-12 form-group">
+                                        <textarea class="form-control" name="message" rows="4" placeholder="Your Message"></textarea>
+                                    </div>
+                                    <div class="col-12 text-center">
+                                        <button type="submit" class="btn btn-primary">Schedule Tour</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div><div class="social-share">
+                            <h5>Share This Property</h5>
+                            <div class="share-buttons">
+                                <a href="#" class="share-btn facebook"><i class="bi bi-facebook"></i></a>
+                                <a href="#" class="share-btn twitter"><i class="bi bi-twitter"></i></a>
+                                <a href="#" class="share-btn whatsapp"><i class="bi bi-whatsapp"></i></a>
+                                <a href="#" class="share-btn email"><i class="bi bi-envelope"></i></a>
+                                <a href="#" class="share-btn print"><i class="bi bi-printer"></i></a>
+                            </div>
+                        </div></div></div>
+            </div>
+        </div>
+    </section>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Gallery
+            const mainImage = document.getElementById("main-image");
+            const thumbnails = document.querySelectorAll(".thumbnail-item");
+            const prevBtn = document.querySelector(".prev-image");
+            const nextBtn = document.querySelector(".next-image");
+
+            if (mainImage && thumbnails.length > 0) {
+                let images = Array.from(thumbnails).map(t => t.dataset.image);
+                let currentIndex = 0;
+
+                thumbnails.forEach((thumb, index) => {
+                    thumb.addEventListener("click", () => {
+                        mainImage.src = thumb.dataset.image;
+                        currentIndex = index;
+                    });
+                });
+
+                nextBtn.addEventListener("click", () => {
+                    currentIndex = (currentIndex + 1) % images.length;
+                    mainImage.src = images[currentIndex];
+                });
+
+                prevBtn.addEventListener("click", () => {
+                    currentIndex = (currentIndex - 1 + images.length) % images.length;
+                    mainImage.src = images[currentIndex];
+                });
+            }
+
+            var lat = {{ property.latitude|default:0 }};
+            var lon = {{ property.longitude|default:0 }};
+            if (lat !== 0) {
+                var map = L.map('map').setView([lat, lon], 14);
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+                L.marker([lat, lon]).addTo(map);
+            }
+        });
+    </script>
+
+{% endblock %}
